@@ -1,0 +1,85 @@
+{
+  "name": "worktreesnuts",
+  "displayName": "worktreesnuts",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "worktreesnuts.selectWorktree",
+        "title": "WorkTreesNuts: Select Git Worktree"
+      },
+      {
+        "command": "worktreesnuts.gotoFile",
+        "title": "WorkTreesNuts: Go to File in Active Worktree"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "worktreesnuts.selectWorktree",
+          "when": "git.state != UNINITIALIZED"
+        }
+      ]
+    },
+    "statusBar": {
+      "items": [
+        {
+          "id": "worktreeStatus",
+          "alignment": "right",
+          "priority": 90,
+          "text": "WT: $(git-branch)",
+          "command": "worktreesnuts.selectWorktree",
+          "when": "git.state != UNINITIALIZED"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "worktreesnuts.gotoFile",
+        "key": "ctrl+cmd+p",
+        "mac": "ctrl+cmd+p",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "worktreesnuts.selectWorktree",
+        "key": "ctrl+cmd+r",
+        "mac": "ctrl+cmd+r",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch2": "tsc -watch -p ./",
+    "watch": "esbuild src/extensions.ts --bundle --platform=node --target=node14 --outfile=out/extensions.js --external=['vscode'] --format=cjs --minify=true",
+    "build": "node esbuild.js",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.77.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "esbuild": "^0.17.18",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "globby": "^13.1.4",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  }
+}
