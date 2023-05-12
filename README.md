@@ -1,25 +1,41 @@
-# WorkTreesNuts README
+# WorktreesNuts
 
-This plugin was written for sole purpose of working on a specific active branch while having cloned a bare git repository.
+Are you tired of the lackluster Git worktree management in your editor? Do you want to feel the wind in your hair as you seamlessly switch between Git worktrees? Well, look no more!
+
+WorktreesNuts is a Visual Studio Code extension that simplifies working with git worktrees when it becomes nuts. It provides a quick and easy way to switch between worktrees, view the currently active worktree, and search for files within that same active worktree. Did you count the times we mentioned worktree?
+
+> This plugin doesn't switch workspaces, so you'll work in the same window while switching only the active working branches.
 
 ## Features
 
-After you clone the git repository in a `bare` style and choose (or create) the branch you would like to work on, you can activate the branch through selecting it using "WorkTreesNuts: Select Git Worktree" (ctlr+cmd+r) which will allow you browsing you active git worktree files through command "WorkTreesNuts: Go to File in Active Worktree" (ctlr+cmd+p). 
+- Switch between worktrees with a single command - "WorktreesNuts: Select Git Worktree"
+- View the currently active worktree in the status bar
+- Blazingly fast file search within the active worktree - "WorktreesNuts: Go to File in Active Worktree"
 
-\!\[feature X\]\(images/feature-x.png\)
+> For these features to work you have to have a git repository that was either initiated or cloned with --bare option.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Animation of how this works
 
+![How active worktrees work](media/worktreesnuts.gif)
+[Quick peek of how it works on YouTube](https://youtu.be/GmfoslZLf14)
 
-## Known Issues
+## How to Use
 
-Currently there's no implementation for a pending changes on source control tab based on active worktree.
+1. Install the extension from the Visual Studio Code marketplace. Click, click, BOOM!
+2. Open the command palette with `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS), then type `Worktree Nuts: Select Worktree`, to select a worktree.
+3. The name of the currently active worktree will be displayed on the status bar.
+4. To search for a file within the active worktree, open the command palette and type `Worktree Nuts: Go to File` (or `Ctrl+Cmd+P` on macOS).
 
-## Release Notes
+### Shortcuts
 
-### 1.0.0
+- `Worktree Nuts: Select Worktree`: Ctrl+Alt+R (or `Ctrl+Cmd+R` on macOS)
+- `Worktree Nuts: Go to File`: Ctrl+Alt+P (or `Ctrl+Cmd+P` on macOS).
 
-Initial release of WorkTreesNuts
+## Requirements
+
+Understanding of how git bare repositories work. You can read about that [here](https://www.geeksforgeeks.org/bare-repositories-in-git/)
+
+<!-- ## Known Issues -->
 
 ---
 

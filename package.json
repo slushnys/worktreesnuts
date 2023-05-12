@@ -1,25 +1,46 @@
 {
   "name": "worktreesnuts",
-  "displayName": "worktreesnuts",
-  "description": "",
-  "version": "0.0.1",
+  "displayName": "WorktreesNuts",
+  "description": "Simplifies your life when working with git worktrees becomes nuts",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.77.0"
   },
+  "publisher": "slushnys",
+  "author": {
+		"name": "Zigmas Slušnys",
+		"email": "zigmasslusnys@gmail.com"
+	},
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/slushnys/worktreesnuts.git"
+	},
+  "bugs": {
+		"url": "https://github.com/slushnys/worktreesnuts/issues"
+	},
+  "homepage": "https://github.com/slushnys/worktreesnuts",
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "workspaceContains:config"
+  ],
+  "keywords": [
+		"git",
+		"worktree",
+		"worktrees",
+    "bare"
+	],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "worktreesnuts.selectWorktree",
-        "title": "WorkTreesNuts: Select Git Worktree"
+        "title": "WorktreesNuts: Select git worktree"
       },
       {
         "command": "worktreesnuts.gotoFile",
-        "title": "WorkTreesNuts: Go to File in Active Worktree"
+        "title": "WorktreesNuts: Go to file in active worktree"
       }
     ],
     "menus": {
@@ -46,23 +67,20 @@
       {
         "command": "worktreesnuts.gotoFile",
         "key": "ctrl+cmd+p",
-        "mac": "ctrl+cmd+p",
-        "when": "editorTextFocus"
+        "mac": "ctrl+cmd+p"
       },
       {
         "command": "worktreesnuts.selectWorktree",
         "key": "ctrl+cmd+r",
-        "mac": "ctrl+cmd+r",
-        "when": "editorTextFocus"
+        "mac": "ctrl+cmd+r"
       }
     ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch2": "tsc -watch -p ./",
-    "watch": "esbuild src/extensions.ts --bundle --platform=node --target=node14 --outfile=out/extensions.js --external=['vscode'] --format=cjs --minify=true",
-    "build": "node esbuild.js",
+    "compile": "npm run build",
+    "watch": "npm run build",
+    "build": "esbuild src/extension.ts --bundle --platform=node --target=node16 --outfile=out/extension.js --external:'vscode' --format=cjs --minify=true",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
